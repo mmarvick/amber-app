@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">Amber</string>
+    <string name="cat">Gato</string>
+    <string name="pre_cat">El gato&#160;</string>
+    <string name="post_cat"></string>
+    <string name="description_good">&#161;Este gato es un gato excelente!</string>
+    <string name="description_bad">Este gato es horrible</string>
+
+    <string name="settings">Configuración</string>
+    <string name="language">Idioma</string> 
+      
+</resources>
