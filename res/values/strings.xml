@@ -7,6 +7,7 @@
     <string name="post_cat">&#160;the cat</string>
     <string name="description_good">This cat is a little fluff ball of joy!</string>
     <string name="description_bad">This cat is a real pain in the ass</string>
+    <string name="button_get_cat">New cat</string>
 
     <string name="settings">Settings</string>
     <string name="language">Language</string> 

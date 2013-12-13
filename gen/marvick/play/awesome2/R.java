@@ -25,9 +25,10 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int imageView1=0x7f090001;
-        public static final int language=0x7f090004;
-        public static final int settings=0x7f090003;
+        public static final int buttonGetCat=0x7f090003;
+        public static final int imageCat=0x7f090001;
+        public static final int language=0x7f090005;
+        public static final int settings=0x7f090004;
         public static final int textView1=0x7f090000;
         public static final int textView2=0x7f090002;
     }
@@ -39,22 +40,23 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int button_get_cat=0x7f060006;
         public static final int cat=0x7f060001;
         public static final int description_bad=0x7f060005;
         public static final int description_good=0x7f060004;
-        public static final int language=0x7f060007;
+        public static final int language=0x7f060008;
         public static final int post_cat=0x7f060003;
         public static final int pre_cat=0x7f060002;
-        public static final int pref_default_cat_name=0x7f06000d;
-        public static final int pref_description_bad_cat=0x7f06000b;
+        public static final int pref_default_cat_name=0x7f06000e;
+        public static final int pref_description_bad_cat=0x7f06000c;
         /**  Strings related to Settings 
  Strings related to Settings 
          */
-        public static final int pref_header_general=0x7f060009;
-        public static final int pref_title_bad_cat=0x7f06000a;
-        public static final int pref_title_cat_name=0x7f06000c;
-        public static final int settings=0x7f060006;
-        public static final int title_activity_settings=0x7f060008;
+        public static final int pref_header_general=0x7f06000a;
+        public static final int pref_title_bad_cat=0x7f06000b;
+        public static final int pref_title_cat_name=0x7f06000d;
+        public static final int settings=0x7f060007;
+        public static final int title_activity_settings=0x7f060009;
     }
     public static final class style {
         /** 

@@ -14,10 +14,10 @@
         android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:contentDescription="@string/cat"
@@ -27,9 +27,17 @@
     
     <TextView
         android:id="@+id/textView2"
-        android:layout_below="@+id/imageView1"
+        android:layout_below="@id/imageCat"
         android:paddingTop="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />    
+        android:layout_height="wrap_content" /> 
+        
+    <Button
+        android:id="@+id/buttonGetCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/button_get_cat"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

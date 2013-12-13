@@ -18,20 +18,30 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/imageView1"
-        android:layout_alignTop="@+id/imageView1"
+        android:layout_toRightOf="@+id/imageCat"
+        android:layout_alignTop="@+id/imageCat"
         android:textSize="16sp"
         android:paddingLeft="20dp" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         android:contentDescription="@string/cat"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:src="@drawable/amber" />
 
+	<Button
+        android:id="@+id/buttonGetCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/button_get_cat"
+        android:layout_centerHorizontal="true" />
+    
 </RelativeLayout>
