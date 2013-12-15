@@ -18,12 +18,15 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -42,6 +45,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
         setText();
         
@@ -179,8 +184,15 @@ public class MainActivity extends Activity {
 					e.printStackTrace();
 				}
 	        	try {
-					editor.putBoolean("cat_bad", jObject.getBoolean("bad"));
-				} catch (JSONException e) {
+	        		boolean catBad = jObject.getBoolean("bad");
+					editor.putBoolean("cat_bad", catBad);
+					MediaPlayer meow = null;
+					if (catBad) 
+						meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.bad_meow);
+					else
+						meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.good_meow);
+					meow.start();
+	        	} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
