@@ -6,7 +6,7 @@
 
     <string name="pref_header_general">General</string>
     <string name="pref_title_bad_cat">Bad cat</string>
-    <string name="pref_description_bad_cat">Is this cat a bitch?</string>
+    <string name="pref_description_bad_cat">Is this cat a jerk?</string>
     <string name="pref_title_cat_name">Cat name</string>
     <string name="pref_default_cat_name">Amber</string>
 

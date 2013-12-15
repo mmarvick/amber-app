@@ -122,22 +122,6 @@ public class MainActivity extends Activity {
     	SharedPreferences.Editor editor = sharedPrefs.edit();
     	
     	new NetworkTask().execute("");
-    	
-    	/*String result = null;
-    	
-    	try {
-    		DefaultHttpClient httpclient = new DefaultHttpClient();
-        	HttpPost httppost = new HttpPost("http://www.mmarvick.com/amber_app/new_cat.php");  		
-    	    HttpResponse response = httpclient.execute(httppost);  
-    	    
-    	    HttpEntity entity = response.getEntity();
-    	    result = EntityUtils.toString(entity);
-    	    
-    	} catch (UnknownHostException e) { 
-            Log.e("result", "shit happened");
-            return;
-    	}
-    	 */
 
     }
     
