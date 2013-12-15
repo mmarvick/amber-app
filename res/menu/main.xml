@@ -5,12 +5,5 @@
         android:orderInCategory="10"
         android:showAsAction="always"
         android:title="@string/settings" />
-    
-    <item
-        android:id="@+id/language"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="@string/language"/>
-
-    
+   
 </menu>

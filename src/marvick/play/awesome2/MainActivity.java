@@ -79,9 +79,6 @@ public class MainActivity extends Activity {
         	case R.id.settings:
         	    startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);
         		return true;
-            case R.id.language:
-            	startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCALE_SETTINGS), RESULT_SETTINGS);
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
