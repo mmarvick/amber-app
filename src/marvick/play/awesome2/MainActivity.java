@@ -1,19 +1,10 @@
 package marvick.play.awesome2;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.UnknownHostException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,12 +16,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,28 +36,21 @@ public class MainActivity extends Activity {
         
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
-        setText();
+        onInit();
         
         final Button buttonNewCat = (Button) findViewById(R.id.buttonGetCat);
         buttonNewCat.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
-        		try {
-					newCat();
-				} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        		new GetNewCat().execute("");
         	}
         });
     }
 
 
+    private void onInit() {
+    	setText();
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -95,7 +76,7 @@ public class MainActivity extends Activity {
     	
     	switch (requestCode) {
     	case RESULT_SETTINGS:
-    		setText();
+    		onInit();
     		break;
     	}
     	
@@ -110,10 +91,10 @@ public class MainActivity extends Activity {
     	builder.append(sharedPrefs.getString("cat_name", "Amber"));
     	builder.append(res.getString(R.string.post_cat));
     	
-    	TextView catIntro = (TextView) findViewById(R.id.textView1);
+    	TextView catIntro = (TextView) findViewById(R.id.cat_intro);
     	catIntro.setText(builder.toString());
     	
-    	TextView catDescrip = (TextView) findViewById(R.id.textView2);
+    	TextView catDescrip = (TextView) findViewById(R.id.cat_descrip);
     	if (sharedPrefs.getBoolean("cat_bad", true)) {
     		catDescrip.setText(res.getString(R.string.description_bad));
     	} else {
@@ -122,15 +103,7 @@ public class MainActivity extends Activity {
     	
     }
     
-    private void newCat() throws ClientProtocolException, IOException, JSONException {
-    	SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-    	SharedPreferences.Editor editor = sharedPrefs.edit();
-    	
-    	new NetworkTask().execute("");
-
-    }
-    
-    private class NetworkTask extends AsyncTask<String, Void, HttpResponse> {
+    private class GetNewCat extends AsyncTask<String, Void, HttpResponse> {
         @Override
         protected HttpResponse doInBackground(String... params) {
         	
@@ -140,7 +113,8 @@ public class MainActivity extends Activity {
             try {
                 return client.execute(request);
             } catch (IOException e) {
-                e.printStackTrace();
+	        	//INSERT AN ALERT HERE
+	            
                 return null;
             } finally {
             client.close();
@@ -158,44 +132,38 @@ public class MainActivity extends Activity {
         	    String textResult = null;
 				try {
 					textResult = EntityUtils.toString(entity);
-					Log.e("result", textResult);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-					return;
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-					return;
 				}
             	
             	JSONObject jObject = null;
+            	String catName = null;
+            	boolean catBad = false;
+            	
 				try {
 					jObject = new JSONObject(textResult);
+					catName = jObject.getString("name");
+					catBad = jObject.getBoolean("bad");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					return;
 				}
         	
-	        	try {
-					editor.putString("cat_name", jObject.getString("name"));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        	try {
-	        		boolean catBad = jObject.getBoolean("bad");
-					editor.putBoolean("cat_bad", catBad);
-					MediaPlayer meow = null;
-					if (catBad) 
-						meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.bad_meow);
-					else
-						meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.good_meow);
-					meow.start();
-	        	} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				editor.putString("cat_name", catName);
+				editor.putBoolean("cat_bad", catBad);
+				
+				MediaPlayer meow = null;
+				if (catBad) 
+					meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.bad_meow);
+				else
+					meow = MediaPlayer.create(MainActivity.this.getApplicationContext(), R.raw.good_meow);
+				meow.start();
+				
 	        	editor.commit();
 	        	setText();
             }
