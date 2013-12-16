@@ -20,28 +20,46 @@ import android.preference.PreferenceManager;
 public class Cat {
 	public static final int GENERATE_NEW = 0;
 	public static final int LOAD_CURRENT = 1;
+	public static final int LOAD_DEFAULT = 2;
+	
 	private String name;
 	private boolean bad;
+	private int id;
 	private Context context;
 	private MainActivity mainActivity;
 	private SharedPreferences sharedPrefs;
 	
-	private Cat (final Context context, MainActivity mainActivity, int loadType) {
+	private Cat (final Context context, MainActivity mainActivity, int loadType, int id) {
 		this.context = context;
 		this.mainActivity = mainActivity;
     	this.sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-    	if (loadType == 0)
+    	this.id = id;
+    	if (loadType == GENERATE_NEW)
     		new GetOnlineCat().execute();
-    	if (loadType == 1)
+    	if (loadType == LOAD_CURRENT)
     		loadCatPrefs();
+    	if (loadType == LOAD_DEFAULT)
+    		loadDefault();
 	}
 	
-	public static Cat loadCat(Context context, MainActivity mainActivity) {
-		return new Cat(context, mainActivity, LOAD_CURRENT);
+	public static Cat loadCatOnLoad(Context context, MainActivity mainActivity) {
+		if ((PreferenceManager.getDefaultSharedPreferences(context).getString("cat_name", "null")).equals("null"))
+			return makeDefault(context, mainActivity);
+		return loadCat(context, mainActivity, 1);
+	}
+	
+	public static Cat loadCat(Context context, MainActivity mainActivity, int catNumber) {
+		return new Cat(context, mainActivity, LOAD_CURRENT, catNumber);
 	}
 	
 	public static Cat generateCat(Context context, MainActivity mainActivity) {
-		return new Cat(context, mainActivity, GENERATE_NEW);
+		int id = 1;
+		return new Cat(context, mainActivity, GENERATE_NEW, id);
+	}
+	
+	public static Cat makeDefault(Context context, MainActivity mainActivity) {
+		int id = 1;
+		return new Cat(context, mainActivity, LOAD_DEFAULT, id);
 	}
 	
 	public String getName() {
@@ -50,6 +68,12 @@ public class Cat {
 	
 	public boolean getBad() {
 		return bad;
+	}
+	
+	private void loadDefault() {
+		name = "Amber";
+		bad = true;
+		finishCreation();
 	}
 	
 	private void loadCatPrefs() {
@@ -67,7 +91,7 @@ public class Cat {
             try {
                 return client.execute(request);
             } catch (IOException e) {
-	        	//INSERT AN ALERT HERE
+	        	//TODO INSERT AN ALERT HERE
 	            
                 return null;
             } finally {
@@ -110,6 +134,7 @@ public class Cat {
 					return;
 				}
 				finishCreation();
+				mainActivity.onInit();
             }
         }
 	}
@@ -127,6 +152,5 @@ public class Cat {
 		meow.start();
 		
 		editor.commit();
-		mainActivity.onInit();
 	}
 }
