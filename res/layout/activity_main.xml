@@ -34,10 +34,18 @@
         
     <Button
         android:id="@+id/buttonGetCat"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/buttonDeleteCat"
         android:text="@string/button_get_cat"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonDeleteCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_delete_cat" />
 
 </RelativeLayout>

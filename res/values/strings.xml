@@ -8,7 +8,8 @@
     <string name="description_good">This cat is a little fluff ball of joy!</string>
     <string name="description_bad">This cat is a real pain in the ass</string>
     <string name="button_get_cat">New cat</string>
+    <string name="button_delete_cat">Delete cat</string>
     <string name="selectcat">Select cat</string>
-    <string name="title_activity_select_cat">SelectCatActivity</string>
+  
 
 </resources>

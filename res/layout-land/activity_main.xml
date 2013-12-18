@@ -12,36 +12,53 @@
         android:id="@+id/cat_intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />    
-    
+        android:textSize="16sp" />
+
     <TextView
         android:id="@+id/cat_descrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/imageCat"
         android:layout_alignTop="@+id/imageCat"
-        android:textSize="16sp"
-        android:paddingLeft="20dp" />
+        android:layout_toRightOf="@+id/imageCat"
+        android:paddingLeft="20dp"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cat_intro"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/cat"
         android:scaleType="fitXY"
-        android:adjustViewBounds="true"
         android:src="@drawable/amber" />
 
-	<Button
-        android:id="@+id/buttonGetCat"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/button_get_cat"
-        android:layout_centerHorizontal="true" />
-    
+        android:orientation="horizontal" >
+
+        <Button
+	        android:id="@+id/buttonGetCat"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/button_get_cat"
+	        android:layout_weight="0.5" />
+        
+        <Button
+            android:id="@+id/buttonDeleteCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/button_delete_cat"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+
+
 </RelativeLayout>

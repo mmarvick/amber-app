@@ -7,11 +7,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -44,7 +41,7 @@ public class SelectCatActivity extends Activity {
 		final ArrayList<Integer> catIDsShare = catIDs;
 		//TODO this is SUPER hacky!!
 		
-		final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, catNames);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, catNames);
 		listview.setAdapter(adapter);
 		
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,8 +53,6 @@ public class SelectCatActivity extends Activity {
 				SelectCatActivity.this.finish();
 			}
 			
-
-		
 		});
 		
 	}

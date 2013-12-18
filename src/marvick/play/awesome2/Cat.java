@@ -64,7 +64,7 @@ public class Cat {
 				
 		}
 		return makeDefault(context, mainActivity);
-	}
+	}	
 	
 	public static Cat loadCat(Context context, MainActivity mainActivity, int catNumber) {
 		return new Cat(context, mainActivity, LOAD_CURRENT, catNumber);
@@ -86,6 +86,11 @@ public class Cat {
 	
 	public boolean getBad() {
 		return bad;
+	}
+	
+	public void deleteCat() {
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		db.delete(CatEntry.TABLE_NAME, "_ID = " + id, null);
 	}
 	
 	private void loadDefault() {
@@ -177,11 +182,13 @@ public class Cat {
 		
 		id = db.insert(CatEntry.TABLE_NAME, null, values);
 		
-		MediaPlayer meow = null;
-		if (bad) 
-			meow = MediaPlayer.create(context, R.raw.bad_meow);
-		else
-			meow = MediaPlayer.create(context, R.raw.good_meow);
-		meow.start();
+		if (id != 1) {
+			MediaPlayer meow = null;
+			if (bad) 
+				meow = MediaPlayer.create(context, R.raw.bad_meow);
+			else
+				meow = MediaPlayer.create(context, R.raw.good_meow);
+			meow.start();
+		}
 	}
 }

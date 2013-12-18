@@ -32,6 +32,15 @@ public class MainActivity extends Activity {
         		((MyApp)getApplicationContext()).setActiveCat(Cat.generateCat(getApplicationContext(), MainActivity.this));
         	}
         });
+        
+        final Button buttonDeleteCat = (Button) findViewById(R.id.buttonDeleteCat);
+        buttonDeleteCat.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		((MyApp)getApplicationContext()).getActiveCat().deleteCat();
+        		((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatOnLoad(getApplicationContext(), MainActivity.this));
+        		MainActivity.this.onInit();
+        	}
+        });
     }
 
 
