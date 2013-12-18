@@ -10,5 +10,6 @@
     <string name="button_get_cat">Gato nuevo</string>
     
     <string name="selectcat">Cambia gato</string>
+    <string name="title_activity_select_cat">SelectCatActivity</string>
       
 </resources>
