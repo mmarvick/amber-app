@@ -8,8 +8,7 @@
     <string name="description_good">&#161;Este gato es un gato excelente!</string>
     <string name="description_bad">Este gato es horrible</string>
     <string name="button_get_cat">Gato nuevo</string>
-
-    <string name="settings">Configuración</string>
-    <string name="language">Idioma</string> 
+    
+    <string name="selectcat">Cambia gato</string>
       
 </resources>

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	private static final int RESULT_SETTINGS = 1;
+	private static final int RESULT_CAT_SELECT = 1;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,8 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-        	case R.id.settings:
-        	    /*startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS); */
-        		return true;
+        	case R.id.selectcat:
+        		startActivityForResult (new Intent(this, SelectCatActivity.class), RESULT_CAT_SELECT);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -63,7 +62,7 @@ public class MainActivity extends Activity {
     	super.onActivityResult (requestCode, resultCode, data);
     	
     	switch (requestCode) {
-    	case RESULT_SETTINGS:
+    	case RESULT_CAT_SELECT:
     		onInit();
     		break;
     	}

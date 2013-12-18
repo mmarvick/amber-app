@@ -9,9 +9,9 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
     <application
-        android:name=".MyApp"
+        android:name="marvick.play.awesome2.MyApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -26,8 +26,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="marvick.play.awesome2.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:name="marvick.play.awesome2.SelectCatActivity"
+            android:label="@string/title_activity_select_cat" >
         </activity>
     </application>
 

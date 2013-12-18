@@ -19,7 +19,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class Cat {
 	public static final int GENERATE_NEW = 0;
@@ -100,7 +99,6 @@ public class Cat {
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		String getInfo = "SELECT " + CatEntry.COLUMN_NAME_NAME + "," + CatEntry.COLUMN_NAME_BAD +
 				" FROM " + CatEntry.TABLE_NAME + " WHERE _ID = " + id;
-		Log.e("SQL", getInfo);
 		Cursor c = db.rawQuery(getInfo, null);
 		c.moveToFirst();
 		
