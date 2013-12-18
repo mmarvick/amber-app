@@ -1,12 +1,9 @@
 package marvick.play.awesome2;
 
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,7 +51,7 @@ public class MainActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.settings:
-        	    startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS);
+        	    /*startActivityForResult(new Intent(this, SettingsActivity.class), RESULT_SETTINGS); */
         		return true;
             default:
                 return super.onOptionsItemSelected(item);
