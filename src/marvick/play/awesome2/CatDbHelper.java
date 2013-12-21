@@ -20,8 +20,6 @@ public class CatDbHelper extends SQLiteOpenHelper {
 	
 	private static final String SQL_DELETE_ENTRIES =
 			"DROP TABLE IF EXISTS " + CatEntry.TABLE_NAME;
-	
-	
 
 	public CatDbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

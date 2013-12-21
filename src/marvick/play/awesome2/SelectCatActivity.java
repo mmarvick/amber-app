@@ -49,7 +49,7 @@ public class SelectCatActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				int catNumber = catIDsShare.get(position);;
-				((MyApp)getApplicationContext()).setActiveCat(Cat.loadCat(getApplicationContext(), null, catNumber));
+				((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatByID(getApplicationContext(), catNumber));
 				SelectCatActivity.this.finish();
 			}
 			

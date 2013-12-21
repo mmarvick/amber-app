@@ -20,27 +20,30 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         if (((MyApp)getApplicationContext()).getActiveCat() == null) {
-        	((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatOnLoad(getApplicationContext(), MainActivity.this));
+        	((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatOnStart(getApplicationContext()));
         	
         }
         
         onInit();
         
+        
         final Button buttonNewCat = (Button) findViewById(R.id.buttonGetCat);
         buttonNewCat.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
-        		((MyApp)getApplicationContext()).setActiveCat(Cat.generateCat(getApplicationContext(), MainActivity.this));
+        		((MyApp)getApplicationContext()).setActiveCat(Cat.newCat(getApplicationContext(), MainActivity.this));
         	}
         });
+        
         
         final Button buttonDeleteCat = (Button) findViewById(R.id.buttonDeleteCat);
         buttonDeleteCat.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
-        		((MyApp)getApplicationContext()).getActiveCat().deleteCat();
-        		((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatOnLoad(getApplicationContext(), MainActivity.this));
+        		long id = ((MyApp)getApplicationContext()).getActiveCat().getID();
+        		((MyApp)getApplicationContext()).setActiveCat(Cat.loadCatAndDelete(getApplicationContext(), id));
         		MainActivity.this.onInit();
         	}
         });
+        
     }
 
 
